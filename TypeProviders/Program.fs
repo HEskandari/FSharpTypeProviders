@@ -1,13 +1,15 @@
-﻿open System
-open System.Windows.Forms
+﻿module TypeProviderExamples
 
-module TypeProviderExamples =
+open System
+open System.Windows.Forms
 
     [<EntryPoint>]
     [<STAThread>]
     let main argv = 
         //AboutCSVTypeProviders.print
-        AboutJsonTypeProvider.print
+        //AboutJsonTypeProvider.print
+        //AboutFreebaseTypeProvider.print |> ignore
+        AboutSqlTypeProvider.print |> ignore
         //AboutWorldBankTypeProvider.print "Australia"
         //let f1 = AboutWorldBankTypeProvider.chart "Australia"
         //let f2 = AboutWorldBankTypeProvider.countriesChart

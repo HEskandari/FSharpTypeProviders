@@ -16,5 +16,5 @@ let print =
                     |> Seq.toArray
 
     people 
-        |> Array.iter (fun person -> printfn "Name: %s %s Email: %s" person.first_name person.last_name person.email)
+        |> Seq.iter (fun person -> printfn "Name: %s %s Email: %s" person.first_name person.last_name person.email)
 
