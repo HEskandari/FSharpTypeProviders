@@ -12,7 +12,7 @@ let private getData (countryName : string) =
 
 
 
-let print country = 
+let print (country) = 
     let indicator = getData country |> Seq.maxBy fst
     printfn "Year: %A Value %A" (fst indicator) (snd indicator)
     
@@ -20,7 +20,7 @@ let print country =
     
     
         
-let chart country =
+let chart (country) =
     let graph = getData country |> Chart.Line
     graph.ShowChart
     
@@ -28,7 +28,7 @@ let chart country =
 
 
 
-let countriesChart = 
+let countriesChart () = 
     let wb = WorldBankData.GetDataContext()
     let countries = [| 
                         wb.Countries.Argentina
@@ -43,15 +43,16 @@ let countriesChart =
     let chart = [for c in countries -> c.Indicators.``School enrollment, preprimary (% gross)``]
                     |> Seq.map Chart.Line
                     |> Chart.Combine
-    chart.ShowChart
+    chart.ShowChart()
         
+
 
 
 
 
 type WorldBankAsync = WorldBankDataProvider<"World Development Indicators", Asynchronous = true>
 
-let countriesChartAsync = 
+let countriesChartAsync () = 
     let wb = WorldBankAsync.GetDataContext()
     let countries = [| 
                         wb.Countries.Argentina
@@ -68,6 +69,5 @@ let countriesChartAsync =
                     |> Async.RunSynchronously
                     |> Seq.map Chart.Line
                     |> Chart.Combine
-    chart.ShowChart
-        
+    chart.ShowChart()
 

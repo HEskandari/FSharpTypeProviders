@@ -5,7 +5,7 @@ open System.IO
 
 type private People = CsvProvider<"./Sample.csv">
 
-let print =
+let print () =
 
     let data = File.OpenRead("./Sample.csv")
     let csv = People.Load data
